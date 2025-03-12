@@ -1,0 +1,52 @@
+name: Lint, Test & Deploy on Push
+
+# Define the trigger event
+on:
+  push:
+    branches:
+      - main  # This will trigger the workflow when changes are pushed to the 'main' branch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencied 
+         run: npm install
+       
+      - name: Install dependencies
+        run: npm install  # or pip install -r requirements.txt if you're using Python
+
+      - name: Lint the code
+        run: npm run lint  # Adjust based on your project's linting setup
+
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '14'  # Adjust based on your version
+
+  #     - name: Install dependencies
+  #       run: npm install
+
+  #     - name: Run tests
+  #       run: npm test  # Adjust if you're using a different test command
+
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Deploy to server
+  #       run: |
+  #         ssh user@your-server-ip "cd /path/to/project && git pull && npm install && npm run build && pm2 restart your-app"  # Example for a Node.js app, adjust for your environment
+  #       env:
+  #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
