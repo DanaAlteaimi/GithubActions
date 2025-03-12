@@ -1,10 +1,7 @@
+
 name: Lint, Test & Deploy on Push
 
-# Define the trigger event
-on:
-  push:
-    branches:
-      - main  # This will trigger the workflow when changes are pushed to the 'main' branch
+on: push
 
 jobs:
   lint:
@@ -17,10 +14,16 @@ jobs:
          run: npm install
        
       - name: Install dependencies
-        run: npm install  # or pip install -r requirements.txt if you're using Python
+        run: npm install 
 
       - name: Lint the code
-        run: npm run lint  # Adjust based on your project's linting setup
+        run: npm run lint 
+
+
+
+
+
+
 
   # test:
   #   runs-on: ubuntu-latest
