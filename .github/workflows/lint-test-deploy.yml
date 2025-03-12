@@ -12,12 +12,10 @@ jobs:
 
       - name: Install dependencied 
          run: npm install
-       
-      - name: Install dependencies
-        run: npm install 
 
       - name: Lint the code
         run: npm run lint 
+        
 
 
 
